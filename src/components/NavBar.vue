@@ -14,7 +14,6 @@
             SELECTION
           </v-btn>
         </template>
-
         <v-list>
           <v-list-item v-for="(item, index) in items" :key="index" router :to="item.path" :prepend-icon="item.icon">
             <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -27,6 +26,10 @@
     </v-toolbar>
 
     <v-navigation-drawer class="nav-drawer" color="#5485b4" app v-model="drawer">
+        <img alt="NavIcon" class="center" src="/nav-icon.png" />
+        <p>RAPHAEL DANIEL LAZARO</p>
+        <p>IT41S2 <br> mrdmlazaro@tip.edu.ph</p>
+        <br>
       <v-list-item class="list-item" color="white" v-for="item in items" :key="item.title" router :to="item.path"
         :prepend-icon="item.icon">
         <v-list-item-title color="white">{{ item.title }}</v-list-item-title>
@@ -72,6 +75,18 @@ const handleSignOut = () => {
 </script>
 
 <style scoped>
+
+p{
+  text-align: center;
+  color: white;
+  font-family: "Gotham Bold", Helvetica, Arial;
+}
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 .menu {
   color: white;
   font-family: "Gotham Bold", Helvetica, Arial;

@@ -1,4 +1,5 @@
 <template>
+
     <body>
         <div id="quiz-container">
             <section class="quiz" v-if="!quizCompleted">
@@ -18,15 +19,17 @@
                 </v-card>
             </section>
             <section v-else>
-                <v-card class="vcard" max-width="512px" color="#5485b4">
+                <v-card class="vcard1" max-height="1024px" color="#5485b4">
                     <h1 id="quizresult">Quiz Result:</h1>
                     <v-card-text v-if="!pass">
                         <h1 id="quizfailed">{{result}}</h1>
                         <p id="quizfailed">{{score}}/{{questions.length}}</p>
+                        <button class="button" @click="reloadPage()">TRY AGAIN</button>
                     </v-card-text>
                     <v-card-text v-else>
                         <h1 id="quizpassed">{{result}}</h1>
                         <p id="quizpassed">{{score}}/{{questions.length}}</p>
+                        <button class="button" @click="reloadPage()">TRY AGAIN</button>
                     </v-card-text>
                 </v-card>
             </section>
@@ -66,6 +69,10 @@ export default {
 
     // Custom methods of the Vue Component
     methods: {
+        reloadPage() {
+            window.location.reload();
+        },
+
         async fetchQuestions() {
             this.loading = true;
             let response = await fetch(
@@ -95,10 +102,6 @@ export default {
             });
             this.questions = data;
             this.loading = false;
-        },
-        startQuiz() {
-            this.squiz = true;
-            return squiz
         },
 
         handleButtonClick: function (event) {
@@ -166,11 +169,11 @@ export default {
                     if (this.quizCompleted = true) {
                         this.passingScore = (0.5 * this.questions.length);
                         if (this.score >= this.passingScore) {
-                            this.result = "Passed"
+                            this.result = "YOU PASSED, I'M PROUD OF YOU"
                             this.pass = true
                         }
                         else {
-                            this.result = "Failed"
+                            this.result = "YOU FAILED, STUDY HARDER!"
                         }
                     }
                     const quiz = {
@@ -204,16 +207,14 @@ body {
     background-attachment: fixed;
     background-size: cover;
     min-height: 100vh;
-    padding: 40px 40px 40px 200px;
+    padding: 50px;
 }
 
 #quiz-container {
+    margin: auto;
     font-family: "Gotham Medium", Helvetica, Arial;
-    margin: 1rem;
-    padding: 1rem;
     max-width: 750px;
     text-align: center;
-
 }
 
 @media only screen and (max-width: 500px) {}
@@ -234,22 +235,22 @@ h1 {
 
 #quizresult h1 {
     color: white;
-    font-size: 1.3rem;
+    font-size: 0.7rem;
     padding: 0.7rem;
 }
 
 #quizfailed {
     color: rgb(255, 0, 0);
     font-family: "Gotham Black", Helvetica, Arial;
-    font-size: 3rem;
-    padding: 0.7rem;
+    font-size: 2.5rem;
+    padding: 1rem;
 }
 
 #quizpassed {
     color: rgb(0, 255, 34);
     font-family: "Gotham Black", Helvetica, Arial;
-    font-size: 3rem;
-    padding: 0.7rem;
+    font-size: 2.5rem;
+    padding: 1rem;
 }
 
 h5 {
@@ -307,7 +308,12 @@ button:focus {
 .vcard {
     font-family: "Gotham Medium", Helvetica, Arial;
     padding: 25px 25px 25px 25px;
-    border-radius:100px;
+    border-radius: 100px;
+}
+.vcard1 {
+    font-family: "Gotham Black", Helvetica, Arial;
+    border-radius: 200px;
+    margin: auto;
 }
 
 .title {

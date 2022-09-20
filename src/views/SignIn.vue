@@ -4,6 +4,7 @@
             <v-row class="vrow">
                 <v-col cols="12" sm="10" md="8" lg="6">
                     <v-card class="vcard" max-width="512px" color="#333333">
+                        <img alt="LzR" class="center" src="/lzr.png" />
                         <v-card-text>
                             <v-card-title class="c-title">
                                 <h2>LOGIN</h2>
@@ -32,6 +33,13 @@
   
 
 <style scoped>
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
 body {
     background-image: url("/bg1.png");
     background-repeat: no-repeat;
@@ -39,6 +47,7 @@ body {
     background-size: cover;
     min-height: 100vh;
     padding-top: 150px;
+    text-align: center;
 }
 
 #container {
