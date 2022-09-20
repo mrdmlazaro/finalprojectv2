@@ -1,6 +1,6 @@
 <template>
   <nav v-if="isLoggedIn">
-    <v-toolbar color="#87CEEB" app>
+    <v-toolbar v-if="isLoggedIn==true" color="#87CEEB" app>
       <v-app-bar-nav-icon color="white" @click='toggleDrawer'></v-app-bar-nav-icon>
       <v-toolbar-title>
         <span class="title-lab">LAZARO PROJECT</span>
@@ -25,7 +25,7 @@
       </v-btn>
     </v-toolbar>
 
-    <v-navigation-drawer class="nav-drawer" color="#5485b4" app v-model="drawer">
+    <v-navigation-drawer v-if="isLoggedIn==true" class="nav-drawer" color="#5485b4" app v-model="drawer">
         <img alt="NavIcon" class="center" src="/nav-icon.png" />
         <p>RAPHAEL DANIEL LAZARO</p>
         <p>IT41S2 <br> mrdmlazaro@tip.edu.ph</p>
